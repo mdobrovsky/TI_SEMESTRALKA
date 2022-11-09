@@ -46,6 +46,8 @@ public class DrawingPanel extends JPanel {
 		ab1.append(new Line2D.Double(290,116,300,120), false);
 		ab1.append(new Line2D.Double(290,124,300,120), false);
 		g2.draw(ab1);
+
+		Path2D bc0;
 	}
 	
 
