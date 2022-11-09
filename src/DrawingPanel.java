@@ -17,6 +17,7 @@ public class DrawingPanel extends JPanel {
 		Graphics2D g2 = (Graphics2D)g1;
 		g2.scale(1.5,1.5);
 		g2.translate(-40, 50);
+		g2.setStroke(new BasicStroke(2));
 
 		Ellipse2D s = new Ellipse2D.Double(100,100,40,40);
 		g2.draw(s);
