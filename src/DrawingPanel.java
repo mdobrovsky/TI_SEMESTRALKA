@@ -34,20 +34,18 @@ public class DrawingPanel extends JPanel {
 		sa0.append(new Line2D.Double(190,124,200,120), false);
 		g2.draw(sa0);
 
-		/*QuadCurve2D sa1 = new QuadCurve2D.Double(133,105,170,90,207,105);
-		Line2D sa1_horni = new Line2D.Double(133,105,140,98);
-		Line2D sa1_dolni = new Line2D.Double(133,105,143,107);*/
-
 		Path2D ss1 = new Path2D.Double(new Arc2D.Double(105,77,30,30,-45, 270, Arc2D.OPEN));
 		ss1.append(new Line2D.Double(109,103,102,98), false);
 		ss1.append(new Line2D.Double(109,103,109,95), false);
 		g2.draw(ss1);
 
-		/*Line2D arc1 = new Line2D.Double(109,103,102,98);
-		Line2D arc2 = new Line2D.Double(109,103,109,95);
-		g2.draw(arc1);
-		g2.draw(arc2);*/
+		Ellipse2D b = new Ellipse2D.Double(300,100,40,40);
+		g2.draw(b);
 
+		Path2D ab1 = new Path2D.Double(new Line2D.Double(240,120,300,120));
+		ab1.append(new Line2D.Double(290,116,300,120), false);
+		ab1.append(new Line2D.Double(290,124,300,120), false);
+		g2.draw(ab1);
 	}
 	
 
