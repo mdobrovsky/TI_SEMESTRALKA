@@ -7,7 +7,7 @@ import java.nio.file.Path;
 public class DrawingPanel extends JPanel {
 
 	public DrawingPanel() {
-		this.setPreferredSize(new Dimension(800, 800));		
+		this.setPreferredSize(new Dimension(1600, 480));
 	}
 	
 	@Override
@@ -16,35 +16,37 @@ public class DrawingPanel extends JPanel {
 		
 		Graphics2D g2 = (Graphics2D)g;
 		g2.scale(2.5,2.5);
-
-
-		//Ellipse2D s = new Ellipse2D.Double(100,100,20,20);
-		//Ellipse2D a = new Ellipse2D.Double(150,100,20,20);
+		g2.translate(-70, 0);
 
 		Ellipse2D s = new Ellipse2D.Double(100,100,40,40);
+		g2.draw(s);
+
 		Ellipse2D a = new Ellipse2D.Double(200,100,40,40);
+		g2.draw(a);
+
+		Path2D vstup = new Path2D.Double(new Line2D.Double(100,120,75,120));
+		vstup.append(new Line2D.Double(90,116,100,120), false);
+		vstup.append(new Line2D.Double(90,124,100,120), false);
+		g2.draw(vstup);
 
 		Path2D sa0 = new Path2D.Double(new Line2D.Double(140,120,200,120));
-
-		Path2D sa0_horni = new Path2D.Double(new Line2D.Double(190,116,200,120));
-		Path2D sa0_dolni = new Path2D.Double(new Line2D.Double(190,124,200,120));
-		//sa0.append(sa0_dolni);
-
-		Arc2D arc = new Arc2D.Double(120,85,100,45,20,140,Arc2D.OPEN);
-
-		QuadCurve2D q = new QuadCurve2D.Double(140,120,150,110,180,120);
-		g2.draw(q);
-		
-
-
-		g2.draw(s);
-		g2.draw(a);
+		sa0.append(new Line2D.Double(190,116,200,120), false);
+		sa0.append(new Line2D.Double(190,124,200,120), false);
 		g2.draw(sa0);
-		g2.draw(sa0_dolni);
-		g2.draw(sa0_horni);
-		//g2.draw(arc);
 
+		/*QuadCurve2D sa1 = new QuadCurve2D.Double(133,105,170,90,207,105);
+		Line2D sa1_horni = new Line2D.Double(133,105,140,98);
+		Line2D sa1_dolni = new Line2D.Double(133,105,143,107);*/
 
+		Path2D ss1 = new Path2D.Double(new Arc2D.Double(105,77,30,30,-45, 270, Arc2D.OPEN));
+		ss1.append(new Line2D.Double(109,103,102,98), false);
+		ss1.append(new Line2D.Double(109,103,109,95), false);
+		g2.draw(ss1);
+
+		/*Line2D arc1 = new Line2D.Double(109,103,102,98);
+		Line2D arc2 = new Line2D.Double(109,103,109,95);
+		g2.draw(arc1);
+		g2.draw(arc2);*/
 
 	}
 	
