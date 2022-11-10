@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         JFrame okno = new JFrame();
-        okno.setTitle("Martin Dobrovsky, A21B0110P, Program reaguje na klávesy x a o");
+        okno.setTitle("Semestralni Prace - Teoreticka Informatika");
         okno.setSize(640, 480);
 
         DrawingPanel panel = new DrawingPanel();
@@ -43,12 +43,7 @@ public class Main {
                 okno.dispose();
             }
         });
-        btnSmaller.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
 
 
 
