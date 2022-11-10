@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class DrawingPanel extends JPanel {
+	AktualniStav aktualniStav;
+	int i = 0;
 
 	public DrawingPanel() {
 		this.setPreferredSize(new Dimension(1200, 480));
@@ -309,15 +311,21 @@ public class DrawingPanel extends JPanel {
 		Hrana[] hrany = new Hrana[]{hranaAA0,hranaAB1,hranaBS1,hranaBC0,hranaCB1,hranaCD0,hranaDA0,hranaDE1,
 		hranaEG1,hranaEF0,hranaFE1,hranaFF0,hranaGG1,hranaGF0,hranaVystupF,hranaVystupE,hranaVstup};
 
-		AktualniStav aktualniStav = new AktualniStav(stavS,hranaVstup,g2);
-		aktualniStav.zvyraznit();
-		aktualniStav.zmen(0);
-		aktualniStav.zmen(1);
-		aktualniStav.zmen(0);
-		aktualniStav.zmen(0);
-		aktualniStav.zmen(1);
+		if (i==0) {
+			aktualniStav = new AktualniStav(stavS, hranaVstup, g2);
+			aktualniStav.zvyraznit();
+			i++;
+		}
+
+		//aktualniStav.zmen(0);
+//		aktualniStav.zmen(1);
+//		aktualniStav.zmen(0);
+//		aktualniStav.zmen(0);
+//		aktualniStav.zmen(1);
+//		aktualniStav.zmen(0);
 
 
+		//
 		//prekresli(g2, stavy, hrany);
 
 	}
@@ -330,6 +338,5 @@ public class DrawingPanel extends JPanel {
 			hrana.zacernit(g2);
 		}
 	}
-
 
 }

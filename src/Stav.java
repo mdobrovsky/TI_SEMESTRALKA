@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
 
 public class Stav {
     Ellipse2D kruznice;

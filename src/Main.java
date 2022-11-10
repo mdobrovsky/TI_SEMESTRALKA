@@ -44,6 +44,32 @@ public class Main {
             }
         });
 
+        panel.setFocusable(true);
+        panel.requestFocus();
+        panel.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyChar()=='1') {
+                    System.out.println("1");
+                    panel.aktualniStav.zmen(1);
+                    panel.repaint();
+                }
+                if(e.getKeyChar()=='0') {
+                    System.out.println("0");
+                    panel.aktualniStav.zmen(0);
+                    panel.repaint();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
 
 
 
