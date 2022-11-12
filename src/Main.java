@@ -22,11 +22,6 @@ public class Main {
         JButton btnExit = new JButton("Exit");
         toolbar.add(btnExit,BorderLayout.WEST);
 
-        JButton btnDefPos = new JButton("M236");
-        toolbar.add(btnDefPos,BorderLayout.CENTER);
-
-        JButton btnSmaller = new JButton("-");
-        toolbar.add(btnSmaller,BorderLayout.EAST);
 
         okno.add(toolbar, BorderLayout.SOUTH);
 
@@ -54,15 +49,19 @@ public class Main {
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyChar()=='1') {
-                    System.out.println("1");
                     panel.aktualniStav.zmen(1);
-                    panel.repaint();
                 }
                 if(e.getKeyChar()=='0') {
-                    System.out.println("0");
                     panel.aktualniStav.zmen(0);
-                    panel.repaint();
                 }
+                if(e.getKeyChar()== '\uFFFF') {
+                    // blbne kdyz tam je jen vstupni stav
+                    panel.stack.pop();
+                    panel.historie = panel.historie.substring(0,panel.historie.length()-6);
+                    panel.aktualniStav.zpet();
+                }
+
+               panel.repaint();
             }
 
             @Override

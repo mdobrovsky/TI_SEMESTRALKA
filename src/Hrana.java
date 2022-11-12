@@ -48,4 +48,13 @@ public class Hrana {
             g2.drawString(ohodnoceni,stringX,stringY);
         }
     }
+
+    public void vystupniHrana(Graphics2D g2){
+        g2.setColor(new Color(50, 205, 50));
+        AffineTransform old = g2.getTransform();
+        if (tr != null) g2.setTransform(tr);
+        g2.draw(sipka);
+        if (tr != null) g2.setTransform(old);
+        g2.setColor(Color.BLACK);
+    }
 }

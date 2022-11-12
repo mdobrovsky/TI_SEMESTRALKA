@@ -1,24 +1,32 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
-import java.awt.geom.Rectangle2D.Double;
-import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.Stack;
 
 public class DrawingPanel extends JPanel {
 	AktualniStav aktualniStav;
-	int i = 0;
+	boolean start = true;
+	Stack<AktualniStav> stack;
+	String historie;
+	int historieX;
+	int historieY;
+
 
 	public DrawingPanel() {
 		this.setPreferredSize(new Dimension(1200, 480));
+		stack = new Stack<>();
+		historie = "";
+		historieX = 50;
+		historieY = 0;
 	}
 	
 	@Override
 	public void paint(Graphics g1) {
 		super.paint(g1);
 
-		
+
 		Graphics2D g2 = (Graphics2D)g1;
+
 		g2.scale(1.5,1.5);
 		g2.translate(-40, 50);
 		g2.setStroke(new BasicStroke(2));
@@ -307,26 +315,44 @@ public class DrawingPanel extends JPanel {
 		Hrana[] vstupniHranyF = new Hrana[]{hranaEF0,hranaFF0,hranaGF0};
 		stavF.setVstupniHrany(vstupniHranyF);
 
-		Stav[] stavy = new Stav[]{stavS,stavA,stavB,stavC,stavD,stavF,stavG,stavE};
-		Hrana[] hrany = new Hrana[]{hranaAA0,hranaAB1,hranaBS1,hranaBC0,hranaCB1,hranaCD0,hranaDA0,hranaDE1,
-		hranaEG1,hranaEF0,hranaFE1,hranaFF0,hranaGG1,hranaGF0,hranaVystupF,hranaVystupE,hranaVstup};
+		stavG.setH_nula(hranaGF0);
+		stavG.setH_jedna(hranaGG1);
+		Hrana[] vstupniHranyG = new Hrana[]{hranaEG1,hranaGG1};
+		stavG.setVstupniHrany(vstupniHranyG);
 
-		if (i==0) {
-			aktualniStav = new AktualniStav(stavS, hranaVstup, g2);
-			aktualniStav.zvyraznit();
-			i++;
+//		Stav[] stavy = new Stav[]{stavS,stavA,stavB,stavC,stavD,stavF,stavG,stavE};
+//		Hrana[] hrany = new Hrana[]{hranaAA0,hranaAB1,hranaBS1,hranaBC0,hranaCB1,hranaCD0,hranaDA0,hranaDE1,
+//		hranaEG1,hranaEF0,hranaFE1,hranaFF0,hranaGG1,hranaGF0,hranaVystupF,hranaVystupE,hranaVstup};
+
+		if (start) {
+			aktualniStav = new AktualniStav(stavS, hranaVstup,stack);
+			aktualniStav.zvyraznit(g2);
+			start = false;
+		}
+		historie += aktualniStav.aktualniStav.nazev + ", ";
+		if (g2.getFontMetrics().stringWidth(historie) > 1000){ // nefunguje :D
+			historie += "\n";
+		}
+		AffineTransform old2 = g2.getTransform();
+		g2.scale(1,1);
+		g2.scale(1/1.5,1/1.5);
+		g2.translate(+40, -50);
+		g2.setColor(Color.black);
+		g2.drawString(historie,historieX,historieY);
+		g2.setTransform(old2);
+		AktualniStav copy = new AktualniStav(aktualniStav.aktualniStav,aktualniStav.aktualniHrana,stack);
+		stack.add(copy);
+		aktualniStav.zvyraznit(g2);
+
+		if (aktualniStav.aktualniStav.nazev.equals("E")){
+			hranaVystupE.vystupniHrana(g2);
+		}
+		if (aktualniStav.aktualniStav.nazev.equals("F")){
+			hranaVystupF.vystupniHrana(g2);
 		}
 
-		//aktualniStav.zmen(0);
-//		aktualniStav.zmen(1);
-//		aktualniStav.zmen(0);
-//		aktualniStav.zmen(0);
-//		aktualniStav.zmen(1);
-//		aktualniStav.zmen(0);
 
 
-		//
-		//prekresli(g2, stavy, hrany);
 
 	}
 
