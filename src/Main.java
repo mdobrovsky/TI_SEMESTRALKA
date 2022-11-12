@@ -50,18 +50,26 @@ public class Main {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyChar()=='1') {
                     panel.aktualniStav.zmen(1);
+                    panel.repaint();
                 }
                 if(e.getKeyChar()=='0') {
                     panel.aktualniStav.zmen(0);
+                    panel.repaint();
                 }
                 if(e.getKeyChar()== '\uFFFF') {
                     // blbne kdyz tam je jen vstupni stav
-                    panel.stack.pop();
-                    panel.historie = panel.historie.substring(0,panel.historie.length()-6);
-                    panel.aktualniStav.zpet();
+                    AktualniStav as = panel.stack.pop();
+                    if (!panel.stack.isEmpty()) {
+                        panel.historie = panel.historie.substring(0, panel.historie.length() - 6);
+                        panel.aktualniStav.zpet();
+                        panel.repaint();
+                    }
+                    else {
+                        panel.stack.push(as);
+                    }
                 }
 
-               panel.repaint();
+               //panel.repaint();
             }
 
             @Override

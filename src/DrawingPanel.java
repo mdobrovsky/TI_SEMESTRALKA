@@ -333,12 +333,13 @@ public class DrawingPanel extends JPanel {
 		if (g2.getFontMetrics().stringWidth(historie) > 1000){ // nefunguje :D
 			historie += "\n";
 		}
+
 		AffineTransform old2 = g2.getTransform();
-		g2.scale(1,1);
+		//g2.scale(1,1);
 		g2.scale(1/1.5,1/1.5);
 		g2.translate(+40, -50);
 		g2.setColor(Color.black);
-		g2.drawString(historie,historieX,historieY);
+		g2.drawString(historie, historieX, historieY);
 		g2.setTransform(old2);
 		AktualniStav copy = new AktualniStav(aktualniStav.aktualniStav,aktualniStav.aktualniHrana,stack);
 		stack.add(copy);
@@ -350,10 +351,6 @@ public class DrawingPanel extends JPanel {
 		if (aktualniStav.aktualniStav.nazev.equals("F")){
 			hranaVystupF.vystupniHrana(g2);
 		}
-
-
-
-
 	}
 
 	public static void prekresli(Graphics2D g2, Stav[] stavy, Hrana[] hrany) {
