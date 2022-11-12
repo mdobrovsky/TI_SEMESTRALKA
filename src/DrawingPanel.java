@@ -362,4 +362,13 @@ public class DrawingPanel extends JPanel {
 		}
 	}
 
+	public void reset() {
+		this.start = true;
+		historie = "";
+		while (!stack.isEmpty()) {
+			stack.pop();
+		}
+	}
+
+
 }

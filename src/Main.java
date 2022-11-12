@@ -68,6 +68,10 @@ public class Main {
                         panel.stack.push(as);
                     }
                 }
+                if (e.getKeyChar() == 'r' || e.getKeyChar() =='R') {
+                    panel.reset();
+                    panel.repaint();
+                }
 
                //panel.repaint();
             }
