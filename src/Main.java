@@ -21,7 +21,7 @@ public class Main {
         JButton btnExit = new JButton("Exit");
         toolbar.add(btnExit,BorderLayout.WEST);
 
-        ta = new JTextArea("S\n");
+        ta = new JTextArea("S          \n");
 
         scrollP = new JScrollPane(ta);
         ta.setTabSize(5);
@@ -56,21 +56,23 @@ public class Main {
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyChar()=='1') {
+                    ta.append("δ("+panel.aktualniStav.aktualniStav.nazev + ", 1) = " + panel.aktualniStav.aktualniStav.h_jedna.doStavu.nazev +"\n");
                     panel.aktualniStav.zmen(1);
-                    ta.append(panel.aktualniStav.aktualniStav.nazev + "\n");
                     panel.repaint();
                 }
                 if(e.getKeyChar()=='0') {
+                    ta.append("δ("+panel.aktualniStav.aktualniStav.nazev + ", 0) = " + panel.aktualniStav.aktualniStav.h_nula.doStavu.nazev +"\n");
+                    //ta.append(panel.aktualniStav.aktualniStav.nazev + "\n");
+
                     panel.aktualniStav.zmen(0);
-                    ta.append(panel.aktualniStav.aktualniStav.nazev + "\n");
                     panel.repaint();
                 }
                 if(e.getKeyChar()== '\uFFFF') {
                     // blbne kdyz tam je jen vstupni stav
                     AktualniStav as = panel.stack.pop();
 
-                    System.out.println((ta.getLineCount()-1)*2-1);
-                    ta.replaceRange("",((ta.getLineCount()-1)*2-2),((ta.getLineCount()-1)*2));
+                    System.out.println((ta.getLineCount()-2)*12);
+                    ta.replaceRange("",((ta.getLineCount()-2)*12),((ta.getLineCount()-1)*12));
                     if (!panel.stack.isEmpty()) {
                         panel.aktualniStav.zpet();
                         panel.repaint();
@@ -80,12 +82,13 @@ public class Main {
                     }
                 }
                 if (e.getKeyChar() == 'r' || e.getKeyChar() =='R') {
-                    ta.replaceRange("",0,((ta.getLineCount()-1)*2));
+                    System.out.println((ta.getLineCount()-1)*12);
+                    ta.replaceRange("",0,((ta.getLineCount()-1)*12));
                     panel.reset();
                     panel.repaint();
                 }
                 if (ta.getLineCount()-1 == 0){
-                    ta.append("S\n");
+                    ta.append("S          \n");
                 }
 
             }
