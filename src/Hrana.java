@@ -26,7 +26,7 @@ public class Hrana {
 
     public void zvyraznit(Graphics2D g2){
         AffineTransform old = g2.getTransform();
-        g2.setColor(Color.RED);
+        g2.setColor(Color.ORANGE);
         if (tr != null) g2.setTransform(tr);
         g2.draw(sipka);
         if (tr != null) g2.setTransform(old);

@@ -32,7 +32,7 @@ public class Stav {
     }
 
     public void zvyraznitStav(Graphics2D g2){
-        g2.setColor(Color.RED);
+        g2.setColor(Color.ORANGE);
         g2.draw(kruznice);
         g2.drawString(nazev,stringX,stringY);
         g2.setColor(Color.BLACK);
