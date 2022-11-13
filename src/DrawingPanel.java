@@ -23,8 +23,9 @@ public class DrawingPanel extends JPanel {
 
 		Graphics2D g2 = (Graphics2D)g1;
 
-//		g2.drawString("Stiskněte '0' nebo '1' k vložení řetězce do konečného automatu\t" +
-//				"Pro krok zpět stikněte '\u2B05'\tPro reset 'r'",);
+		g2.drawString("Stiskněte '0' nebo '1' k vložení řetězce do konečného automatu                        " +
+				"Pro krok zpět stikněte '\u2B05'                        Pro reset 'r'",20,40);
+		g2.drawString("Historie:",1125,20);
 
 		g2.scale(1.5,1.5);
 		g2.translate(-40, 50);
