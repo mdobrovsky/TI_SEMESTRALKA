@@ -7,17 +7,12 @@ public class DrawingPanel extends JPanel {
 	AktualniStav aktualniStav;
 	boolean start = true;
 	Stack<AktualniStav> stack;
-	String historie;
-	int historieX;
-	int historieY;
+
 
 
 	public DrawingPanel() {
 		this.setPreferredSize(new Dimension(1200, 480));
 		stack = new Stack<>();
-		historie = "";
-		historieX = 50;
-		historieY = 0;
 	}
 	
 	@Override
@@ -25,7 +20,11 @@ public class DrawingPanel extends JPanel {
 		super.paint(g1);
 
 
+
 		Graphics2D g2 = (Graphics2D)g1;
+
+//		g2.drawString("Stiskněte '0' nebo '1' k vložení řetězce do konečného automatu\t" +
+//				"Pro krok zpět stikněte '\u2B05'\tPro reset 'r'",);
 
 		g2.scale(1.5,1.5);
 		g2.translate(-40, 50);
@@ -329,18 +328,7 @@ public class DrawingPanel extends JPanel {
 			aktualniStav.zvyraznit(g2);
 			start = false;
 		}
-		historie += aktualniStav.aktualniStav.nazev + ", ";
-		if (g2.getFontMetrics().stringWidth(historie) > 1000){ // nefunguje :D
-			historie += "\n";
-		}
 
-		AffineTransform old2 = g2.getTransform();
-		//g2.scale(1,1);
-		g2.scale(1/1.5,1/1.5);
-		g2.translate(+40, -50);
-		g2.setColor(Color.black);
-		g2.drawString(historie, historieX, historieY);
-		g2.setTransform(old2);
 		AktualniStav copy = new AktualniStav(aktualniStav.aktualniStav,aktualniStav.aktualniHrana,stack);
 		stack.add(copy);
 		aktualniStav.zvyraznit(g2);
@@ -364,7 +352,6 @@ public class DrawingPanel extends JPanel {
 
 	public void reset() {
 		this.start = true;
-		historie = "";
 		while (!stack.isEmpty()) {
 			stack.pop();
 		}

@@ -1,13 +1,12 @@
-import java.awt.BorderLayout;
-import java.awt.KeyEventDispatcher;
-import java.awt.KeyboardFocusManager;
+import java.awt.*;
 import java.awt.event.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
+import javax.swing.text.BadLocationException;
 
 public class Main {
+    private static JTextArea ta;
+    private static JScrollPane scrollP;
 
     public static void main(String[] args) {
         JFrame okno = new JFrame();
@@ -21,6 +20,14 @@ public class Main {
 
         JButton btnExit = new JButton("Exit");
         toolbar.add(btnExit,BorderLayout.WEST);
+
+        ta = new JTextArea("S\n");
+
+        scrollP = new JScrollPane(ta);
+        ta.setTabSize(5);
+        scrollP.setPreferredSize(new Dimension(100, 60));
+
+        okno.add(scrollP, BorderLayout.EAST);
 
 
         okno.add(toolbar, BorderLayout.SOUTH);
@@ -50,17 +57,21 @@ public class Main {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyChar()=='1') {
                     panel.aktualniStav.zmen(1);
+                    ta.append(panel.aktualniStav.aktualniStav.nazev + "\n");
                     panel.repaint();
                 }
                 if(e.getKeyChar()=='0') {
                     panel.aktualniStav.zmen(0);
+                    ta.append(panel.aktualniStav.aktualniStav.nazev + "\n");
                     panel.repaint();
                 }
                 if(e.getKeyChar()== '\uFFFF') {
                     // blbne kdyz tam je jen vstupni stav
                     AktualniStav as = panel.stack.pop();
+
+                    System.out.println((ta.getLineCount()-1)*2-1);
+                    ta.replaceRange("",((ta.getLineCount()-1)*2-2),((ta.getLineCount()-1)*2));
                     if (!panel.stack.isEmpty()) {
-                        panel.historie = panel.historie.substring(0, panel.historie.length() - 6);
                         panel.aktualniStav.zpet();
                         panel.repaint();
                     }
@@ -69,11 +80,14 @@ public class Main {
                     }
                 }
                 if (e.getKeyChar() == 'r' || e.getKeyChar() =='R') {
+                    ta.replaceRange("",0,((ta.getLineCount()-1)*2));
                     panel.reset();
                     panel.repaint();
                 }
+                if (ta.getLineCount()-1 == 0){
+                    ta.append("S\n");
+                }
 
-               //panel.repaint();
             }
 
             @Override
