@@ -56,18 +56,21 @@ public class Main {
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyChar()=='1') {
+                    panel.retezec = panel.retezec + "1";
                     ta.append("δ("+panel.aktualniStav.aktualniStav.nazev + ", 1) = " + panel.aktualniStav.aktualniStav.h_jedna.doStavu.nazev +"\n");
                     panel.aktualniStav.zmen(1);
                     panel.repaint();
                 }
                 if(e.getKeyChar()=='0') {
+                    panel.retezec = panel.retezec + "0";
                     ta.append("δ("+panel.aktualniStav.aktualniStav.nazev + ", 0) = " + panel.aktualniStav.aktualniStav.h_nula.doStavu.nazev +"\n");
-                    //ta.append(panel.aktualniStav.aktualniStav.nazev + "\n");
-
                     panel.aktualniStav.zmen(0);
                     panel.repaint();
                 }
                 if(e.getKeyChar()== '\uFFFF') {
+                    if(panel.retezec.length() >=1) {
+                        panel.retezec = panel.retezec.substring(0, panel.retezec.length() - 1);
+                    }
                     // blbne kdyz tam je jen vstupni stav
                     AktualniStav as = panel.stack.pop();
 
@@ -82,6 +85,7 @@ public class Main {
                     }
                 }
                 if (e.getKeyChar() == 'r' || e.getKeyChar() =='R') {
+                    panel.retezec = "";
                     System.out.println((ta.getLineCount()-1)*12);
                     ta.replaceRange("",0,((ta.getLineCount()-1)*12));
                     panel.reset();
