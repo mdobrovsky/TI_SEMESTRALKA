@@ -3,13 +3,19 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 
 public class Stav {
+    /** objekt kruznice stavu */
     Ellipse2D kruznice;
+    /** nazev stavu */
     String nazev;
+    /** pozice nazvu */
     int stringX;
+    /** pozice nazvu */
     int stringY;
-
+    /** hrana s ohodnocenim nula ze stavu */
     Hrana h_nula;
+    /** hrana s ohodnocenim jedna ze stavu */
     Hrana h_jedna;
+    /** vstupni hrany stavu */
     Hrana[] vstupniHrany;
 
     public Stav(Ellipse2D kruznice, String nazev,int x, int y) {

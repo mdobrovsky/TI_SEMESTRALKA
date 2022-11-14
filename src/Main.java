@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         JFrame okno = new JFrame();
-        okno.setTitle("Semestralni Prace - Teoreticka Informatika");
+        okno.setTitle("Semestrální Práce KIV/TI - Simulace rozpoznávacího konečného automatu");
         okno.setSize(640, 480);
 
         DrawingPanel panel = new DrawingPanel();
@@ -26,6 +26,7 @@ public class Main {
         scrollP = new JScrollPane(ta);
         ta.setTabSize(5);
         scrollP.setPreferredSize(new Dimension(100, 60));
+
 
         okno.add(scrollP, BorderLayout.EAST);
 
@@ -71,10 +72,8 @@ public class Main {
                     if(panel.retezec.length() >=1) {
                         panel.retezec = panel.retezec.substring(0, panel.retezec.length() - 1);
                     }
-                    // blbne kdyz tam je jen vstupni stav
                     AktualniStav as = panel.stack.pop();
 
-                    System.out.println((ta.getLineCount()-2)*12);
                     ta.replaceRange("",((ta.getLineCount()-2)*12),((ta.getLineCount()-1)*12));
                     if (!panel.stack.isEmpty()) {
                         panel.aktualniStav.zpet();
@@ -86,7 +85,6 @@ public class Main {
                 }
                 if (e.getKeyChar() == 'r' || e.getKeyChar() =='R') {
                     panel.retezec = "";
-                    System.out.println((ta.getLineCount()-1)*12);
                     ta.replaceRange("",0,((ta.getLineCount()-1)*12));
                     panel.reset();
                     panel.repaint();
