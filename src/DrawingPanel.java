@@ -17,6 +17,7 @@ public class DrawingPanel extends JPanel {
 
     public DrawingPanel() {
         this.setPreferredSize(new Dimension(1200, 480));
+        this.setBackground(Color.white);
         stack = new Stack<>();
     }
 
@@ -32,6 +33,7 @@ public class DrawingPanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g1;
         Font font = g2.getFont();
 
+        // vykresleni informaci a pokynu
         g2.setFont(new Font("Times New", Font.TYPE1_FONT, 15));
         g2.drawString("Stiskněte '0' nebo '1' k vložení řetězce do konečného automatu                        " +
                 "Pro krok zpět stikněte '\u2B05'                        Pro reset 'r'", 20, 35);
@@ -41,12 +43,15 @@ public class DrawingPanel extends JPanel {
         g2.drawString(" " + retezec, 145, 80);
 
         g2.setFont(font);
-        g2.drawString("Vypracovali: Vitalyi Bohera, Martin Dobrovský", 20, 460);
+        g2.drawString("Vypracovali: Vitaliy Bohera, Martin Dobrovský", 20, 460);
         g2.drawString("Fakulta aplikovaných věd Západočeské univerzity", 20, 477);
         g2.scale(1.5, 1.5);
         g2.translate(-40, 50);
         g2.setStroke(new BasicStroke(2));
 
+        ///////////////////////////////////////////////////////////////////////////////
+        // vytvareni a vykresleni hran a stavu
+        ///////////////////////////////////////////////////////////////////////////////
 
         Ellipse2D s = new Ellipse2D.Double(100, 100, 40, 40);
         g2.draw(s);
@@ -339,23 +344,23 @@ public class DrawingPanel extends JPanel {
 
 //        stavy = new Stav[]{stavS, stavA, stavB, stavC, stavD, stavF, stavG, stavE};
 //        hrany = new Hrana[]{hranaSS1, hranaSA0, hranaAA0, hranaAB1, hranaBS1, hranaBC0, hranaCB1, hranaCD0, hranaDA0, hranaDE1,
-//                hranaEG1, hranaEF0, hranaFE1, hranaFF0, hranaGG1, hranaGF0, hranaVystupF, hranaVystupE, hranaVstup};
+//        hranaEG1, hranaEF0, hranaFE1, hranaFF0, hranaGG1, hranaGF0, hranaVystupF, hranaVystupE, hranaVstup};
 
 
-        if (start) {
+        if (start) { // nastaveni pocatecniho stavu
             aktualniStav = new AktualniStav(stavS, hranaVstup, stack);
             aktualniStav.zvyraznit(g2);
             start = false;
         }
         AktualniStav copy = new AktualniStav(aktualniStav.aktualniStav, aktualniStav.aktualniHrana, stack);
-        stack.add(copy);
-        aktualniStav.zvyraznit(g2);
+        stack.add(copy); // pridani stavu do zasobniku
+        aktualniStav.zvyraznit(g2); // zvyrazneni aktualniho stavu
 
-        if (aktualniStav.aktualniStav.nazev.equals("E")) {
-            hranaVystupE.vystupniHrana(g2);
-        }
-        if (aktualniStav.aktualniStav.nazev.equals("F")) {
-			hranaVystupF.vystupniHrana(g2);
+        if (aktualniStav.aktualniStav.nazev.equals("E")) {      //
+            hranaVystupE.vystupniHrana(g2);                     //
+        }                                                       //  pokud je aktualni stav vystupni tak ho zvyraznime "jinak"
+        if (aktualniStav.aktualniStav.nazev.equals("F")) {      //
+            hranaVystupF.vystupniHrana(g2);                     //
         }
     }
 
