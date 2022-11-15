@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Automa">
+    <output-path>$PROJECT_DIR$/out/artifacts/Automa</output-path>
+    <root id="archive" name="Automat.jar">
+      <element id="module-output" name="TI_SEMESTRALKA" />
+    </root>
+  </artifact>
+</component>
