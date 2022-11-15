@@ -2,9 +2,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-import javax.swing.text.BadLocationException;
 
-public class Main {
+public class Automat {
     private static JTextArea ta;
     private static JScrollPane scrollP;
 
@@ -106,7 +105,6 @@ public class Main {
 
             }
         });
-
     }
 
 }
