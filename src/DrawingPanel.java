@@ -42,18 +42,19 @@ public class DrawingPanel extends JPanel {
         g2.drawString("Vstupní řetězec:", 20, 95);
 
         g2.drawLine(0,107,1200,107);
-        g2.drawLine(0,535,1200,535);
+        g2.drawLine(0,525,1200,525);
         g2.setFont(new Font("Times New", Font.TYPE1_FONT, 11));
         g2.drawString("*Pro ulehčení řešení situace, kdy se uživatel zmýlí v zadání " +
                 "vstupního symbolu nebo chce zkusit zadat jinou koncovou část řetězce, " +
-                "je implementována funkce Krok zpět. Konečný automat sám o sobě se k již" ,20,545);
+                "je implementována funkce Krok zpět. Konečný automat sám o sobě se k již" ,20,540);
         g2.drawString("zpracované " +
-                "části vstupního řetězce vracet nemůže.", 20, 560);
+                "části vstupního řetězce vracet nemůže.", 20, 555);
+        g2.setFont(new Font("Times New", Font.TYPE1_FONT, 8));
+        g2.drawString("Vypracovali: Vitaliy Bohera, Martin Dobrovský", 20, 577);
+        g2.drawString("Fakulta aplikovaných věd Západočeské univerzity", 20, 594);
         g2.setFont(font);
-        g2.drawString("Vypracovali: Vitaliy Bohera, Martin Dobrovský", 920, 577);
-        g2.drawString("Fakulta aplikovaných věd Západočeské univerzity", 920, 594);
         g2.scale(1.5, 1.5);
-        g2.translate(-30, 95);
+        g2.translate(-30, 90);
         g2.setStroke(new BasicStroke(2));
 
         ///////////////////////////////////////////////////////////////////////////////
@@ -361,20 +362,20 @@ public class DrawingPanel extends JPanel {
         aktualniStav.zvyraznit(g2); // zvyrazneni aktualniho stavu
 
         g2.setColor(Color.red);
-        g2.drawString(" " + retezec, 135, -30);
+        g2.drawString(" " + retezec, 135, -25);
         if (aktualniStav.aktualniStav.nazev.equals("E")) {      //
             hranaVystupE.vystupniHrana(g2);                     //
             g2.setColor(Color.green);                           //
-            g2.drawString(" " + retezec, 135, -30);
+            g2.drawString(" " + retezec, 135, -25);
             g2.setColor(Color.BLACK);
-            g2.drawString("(\u2713 řetězec je akceptován \u2713)", 140 + g2.getFontMetrics().stringWidth(retezec), -30);//
+            g2.drawString("(\u2713 řetězec je akceptován \u2713)", 140 + g2.getFontMetrics().stringWidth(retezec), -25);//
         }                                                       //  pokud je aktualni stav vystupni tak ho zvyraznime "jinak"
         if (aktualniStav.aktualniStav.nazev.equals("F")) {      //
             hranaVystupF.vystupniHrana(g2);
             g2.setColor(Color.green);
-            g2.drawString(" " + retezec, 135, -30);
+            g2.drawString(" " + retezec, 135, -25);
             g2.setColor(Color.BLACK);
-            g2.drawString("(\u2713 řetězec je akceptován \u2713)", 140 + g2.getFontMetrics().stringWidth(retezec), -30);
+            g2.drawString("(\u2713 řetězec je akceptován \u2713)", 140 + g2.getFontMetrics().stringWidth(retezec), -25);
         }
     }
 
