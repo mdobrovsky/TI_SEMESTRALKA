@@ -16,7 +16,7 @@ public class DrawingPanel extends JPanel {
 
 
     public DrawingPanel() {
-        this.setPreferredSize(new Dimension(1200, 480));
+        this.setPreferredSize(new Dimension(1200, 600));
         this.setBackground(Color.white);
         stack = new Stack<>();
     }
@@ -36,17 +36,23 @@ public class DrawingPanel extends JPanel {
         // vykresleni informaci a pokynu
         g2.setFont(new Font("Times New", Font.TYPE1_FONT, 15));
         g2.drawString("Stiskněte '0' nebo '1' k vložení řetězce do konečného automatu                        " +
-                "Pro krok zpět stikněte '\u2B05' (backspace)                        Pro reset 'r'", 20, 35);
-        g2.drawString("Historie:", 1125, 20);
+                "Pro *krok zpět stikněte '\u2B05' (backspace)                        Pro reset 'r'", 20, 60);
+        g2.drawString("Historie:", 1125, 25);
 
-        g2.drawString("Vstupní řetězec:", 20, 80);
-        //g2.drawString(" " + retezec, 145, 80);
+        g2.drawString("Vstupní řetězec:", 20, 95);
 
+        g2.drawLine(0,107,1200,107);
+        g2.drawLine(0,535,1200,535);
+        g2.setFont(new Font("Times New", Font.TYPE1_FONT, 8));
+        g2.drawString("*Pro ulehčení řešení situace, kdy se uživatel zmýlí v zadání " +
+                "vstupního symbolu nebo chce zkusit zadat jinou koncovou část řetězce, " +
+                "je implementována funkce Krok zpět. Konečný automat sám o sobě se k již zpracované " +
+                "části vstupního řetězce vracet nemůže.",20,545);
         g2.setFont(font);
-        g2.drawString("Vypracovali: Vitaliy Bohera, Martin Dobrovský", 20, 460);
-        g2.drawString("Fakulta aplikovaných věd Západočeské univerzity", 20, 477);
+        g2.drawString("Vypracovali: Vitaliy Bohera, Martin Dobrovský", 20, 577);
+        g2.drawString("Fakulta aplikovaných věd Západočeské univerzity", 20, 594);
         g2.scale(1.5, 1.5);
-        g2.translate(-40, 50);
+        g2.translate(-30, 95);
         g2.setStroke(new BasicStroke(2));
 
         ///////////////////////////////////////////////////////////////////////////////
@@ -342,9 +348,6 @@ public class DrawingPanel extends JPanel {
         Hrana[] vstupniHranyG = new Hrana[]{hranaEG1, hranaGG1};
         stavG.setVstupniHrany(vstupniHranyG);
 
-//        stavy = new Stav[]{stavS, stavA, stavB, stavC, stavD, stavF, stavG, stavE};
-//        hrany = new Hrana[]{hranaSS1, hranaSA0, hranaAA0, hranaAB1, hranaBS1, hranaBC0, hranaCB1, hranaCD0, hranaDA0, hranaDE1,
-//        hranaEG1, hranaEF0, hranaFE1, hranaFF0, hranaGG1, hranaGF0, hranaVystupF, hranaVystupE, hranaVstup};
 
 
         if (start) { // nastaveni pocatecniho stavu
@@ -357,20 +360,20 @@ public class DrawingPanel extends JPanel {
         aktualniStav.zvyraznit(g2); // zvyrazneni aktualniho stavu
 
         g2.setColor(Color.red);
-        g2.drawString(retezec, 135, 5);
+        g2.drawString(" " + retezec, 135, -30);
         if (aktualniStav.aktualniStav.nazev.equals("E")) {      //
             hranaVystupE.vystupniHrana(g2);                     //
             g2.setColor(Color.green);                           //
-            g2.drawString(retezec, 135, 5);
+            g2.drawString(" " + retezec, 135, -30);
             g2.setColor(Color.BLACK);
-            g2.drawString("(řetězec je akceptován)", 140 + g2.getFontMetrics().stringWidth(retezec), 5);//
+            g2.drawString("(\u2713 řetězec je akceptován \u2713)", 140 + g2.getFontMetrics().stringWidth(retezec), -30);//
         }                                                       //  pokud je aktualni stav vystupni tak ho zvyraznime "jinak"
         if (aktualniStav.aktualniStav.nazev.equals("F")) {      //
             hranaVystupF.vystupniHrana(g2);
             g2.setColor(Color.green);
-            g2.drawString(retezec, 135, 5);
+            g2.drawString(" " + retezec, 135, -30);
             g2.setColor(Color.BLACK);
-            g2.drawString("(řetězec je akceptován)", 140 + g2.getFontMetrics().stringWidth(retezec), 5);
+            g2.drawString("(\u2713 řetězec je akceptován \u2713)", 140 + g2.getFontMetrics().stringWidth(retezec), -30);
         }
     }
 
