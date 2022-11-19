@@ -73,7 +73,7 @@ public class Automat {
                     panel.aktualniStav.zmen(0); // nastavime novy aktualni stav
                     panel.repaint(); // vykresleme zmeny
                 }
-                if(e.getKeyCode()== KeyEvent.VK_LEFT) { // krok zpet
+                if(e.getKeyCode()== KeyEvent.VK_BACK_SPACE) { // krok zpet
                     if(panel.retezec.length() >=1) { // uprava aktualniho retezce, odrizneme posledni symbol
                         panel.retezec = panel.retezec.substring(0, panel.retezec.length() - 1);
                     }

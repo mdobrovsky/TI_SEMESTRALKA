@@ -36,11 +36,11 @@ public class DrawingPanel extends JPanel {
         // vykresleni informaci a pokynu
         g2.setFont(new Font("Times New", Font.TYPE1_FONT, 15));
         g2.drawString("Stiskněte '0' nebo '1' k vložení řetězce do konečného automatu                        " +
-                "Pro krok zpět stikněte '\u2B05'                        Pro reset 'r'", 20, 35);
+                "Pro krok zpět stikněte '\u2B05' (backspace)                        Pro reset 'r'", 20, 35);
         g2.drawString("Historie:", 1125, 20);
 
         g2.drawString("Vstupní řetězec:", 20, 80);
-        g2.drawString(" " + retezec, 145, 80);
+        //g2.drawString(" " + retezec, 145, 80);
 
         g2.setFont(font);
         g2.drawString("Vypracovali: Vitaliy Bohera, Martin Dobrovský", 20, 460);
@@ -356,11 +356,21 @@ public class DrawingPanel extends JPanel {
         stack.add(copy); // pridani stavu do zasobniku
         aktualniStav.zvyraznit(g2); // zvyrazneni aktualniho stavu
 
+        g2.setColor(Color.red);
+        g2.drawString(retezec, 135, 5);
         if (aktualniStav.aktualniStav.nazev.equals("E")) {      //
             hranaVystupE.vystupniHrana(g2);                     //
+            g2.setColor(Color.green);                           //
+            g2.drawString(retezec, 135, 5);
+            g2.setColor(Color.BLACK);
+            g2.drawString("(řetězec je akceptován)", 140 + g2.getFontMetrics().stringWidth(retezec), 5);//
         }                                                       //  pokud je aktualni stav vystupni tak ho zvyraznime "jinak"
         if (aktualniStav.aktualniStav.nazev.equals("F")) {      //
-            hranaVystupF.vystupniHrana(g2);                     //
+            hranaVystupF.vystupniHrana(g2);
+            g2.setColor(Color.green);
+            g2.drawString(retezec, 135, 5);
+            g2.setColor(Color.BLACK);
+            g2.drawString("(řetězec je akceptován)", 140 + g2.getFontMetrics().stringWidth(retezec), 5);
         }
     }
 
