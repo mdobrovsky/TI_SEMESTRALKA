@@ -36,7 +36,7 @@ public class DrawingPanel extends JPanel {
         // vykresleni informaci a pokynu
         g2.setFont(new Font("Times New", Font.TYPE1_FONT, 15));
         g2.drawString("Stiskněte '0' nebo '1' k vložení řetězce do konečného automatu                        " +
-                "Pro *krok zpět stikněte '\u2B05' (backspace)                        Pro reset 'r'", 20, 60);
+                "Pro *krok zpět stiskněte '\u2B05' (backspace)                        Pro reset 'R'", 20, 60);
         g2.drawString("Historie:", 1125, 25);
 
         g2.drawString("Vstupní řetězec:", 20, 95);
